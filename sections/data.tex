@@ -1,0 +1,130 @@
+\subsection*{Data}
+
+%------------------------------
+\begin{myslide}{c}{Available Data}
+
+\begin{columns}
+
+\begin{column}{1\textwidth}
+
+\begin{itemize}
+
+\item Operational requests and incidents are managed in ServiceNow.
+
+    \begin{itemize}
+
+    \item Data gathered by team, ticket type and priority for model for six months, from 1/1/23 to 6/30/23 including both arrival and closure dates.
+
+    \item Arrival data fit as unique Poisson distributions by team using Palisade @ Risk for use in the DES models as inter-arrival data.
+
+    \end{itemize}
+
+\item Other data elements determined through interview by team managers.
+
+\end{itemize}
+
+\myfig{figures/palisade_data.svg}{0.25}
+
+\end{column}
+
+\end{columns}
+
+\end{myslide}
+
+%------------------------------
+\begin{myslide}{c}{Estimated Data}
+
+\begin{columns}
+
+\begin{column}{1\textwidth}
+
+\begin{itemize}
+
+\item Data determined through interviews with department managers due to the lack of reportable data in existing systems:
+
+    \begin{itemize}
+        \item Scheduled tasks also use exponential inter-arrival times but occur less frequently (and often in bunches in reality).
+       \item Required skill level, set on entity (work item) generation: High 5\%, Medium 25\%, Low 75\%.
+       \tiem Error rates are initialized on entity generation with a probability of 0.5\%.
+       \item Modification of error probability and required service times, based on skill level data.
+       \item Service Times.
+    \end{itemize}
+
+\item Parameters requiring further justification include:
+
+    \begin{itemize}
+        \item Effects of managerial pressure and fatigue.
+        \item Initial error and restart rates.
+    \end{itemize}
+
+\end{itemize}
+
+\end{column}
+
+\end{columns}
+
+\end{myslide}
+
+%------------------------------
+\begin{myslide}{c}{Dynamic Parameters}
+
+\begin{columns}
+
+\begin{column}{1\textwidth}
+
+\begin{itemize}
+
+\item Work stoppage rates.
+
+\item Rework generation rates.
+
+\item Required service time also increases by rule based on skill level differences.
+
+\end{itemize}
+
+\end{column}
+
+\end{columns}
+
+\end{myslide}
+
+%------------------------------
+\begin{myslide}{c}{Key Model Parameters}
+
+\begin{columns}
+
+\begin{column}{1\textwidth}
+
+\begin{itemize}
+
+\item Inter-arrival times of work items
+
+    \begin{itemize}
+    \item In DES model, each work item type (entity) is generated according to fitted exponential distributions.
+    \item In SD model, arrivals are based on the mean of the fitted exponential distribution for each work item type.
+    \end{itemize}
+
+\item SD Parameters.
+
+\end{itemize}
+
+\end{column}
+
+\end{columns}
+
+\end{myslide}
+
+%------------------------------
+\begin{myslide}{c}{Output}
+
+\begin{columns}
+
+\begin{column}{1\textwidth}
+
+
+
+\end{column}
+
+\end{columns}
+
+\end{myslide}

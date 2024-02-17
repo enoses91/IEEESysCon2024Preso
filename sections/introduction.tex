@@ -1,0 +1,97 @@
+\subsection*{Introduction}
+
+%------------------------------
+\begin{myslide}{c}{Motivation for this Research}
+
+\begin{columns}
+
+\begin{column}{1\textwidth}
+
+\begin{itemize}
+
+\item Foundational question: Where does automation have the highest impact in healthcare provider environments where systems are predominately deployed on-premises and not in the cloud?
+
+\item Implication: Need to be able to accurately characterize the work management processes of the organization in question.
+
+\end{itemize}
+
+\end{column}
+
+\end{columns}
+
+\end{myslide}
+
+%------------------------------
+\begin{myslide}{c}{Process Simulation}
+
+\begin{columns}
+
+\begin{column}{1\textwidth}
+
+\begin{itemize}
+
+\item Use Discrete Event Simulation (DES) to predict the performance of work queuing in terms of total time, with prioritization by ticket or task.
+
+\item Use System Dynamics (SD) to account for influences that affect total work time, especially the impact of managerial pressure on rework and work stoppages driven by re-prioritization.
+
+\item Hybrid modeling leverages multiple techniques - in this case both DES and SD - to obtain benefits of both modeling methods by iterating through each model sequentially.
+
+\end{itemize}
+
+\end{column}
+
+\end{columns}
+
+\end{myslide}
+
+%------------------------------
+\begin{myslide}{c}{Case Study Organization}
+
+\begin{columns}
+
+\begin{column}{1\textwidth}
+
+\begin{itemize}
+
+\item Teams are built around specific technologies: network engineering, email, virtualization, server administration, etc.
+
+\item Teams support both operational tickets and project tasks within their specialty.
+
+\item Teams have engineers of varying levels of skill.
+
+\item The models are intended to reflect the flow of work over relatively short timelines, so there is no ability to flex staff through hiring (or contract outsourcing) even in the absence of budget constraints.
+
+\item The organization is straightforward, the management of work is not…
+
+\end{itemize}
+
+\end{column}
+
+\end{columns}
+
+\end{myslide}
+
+%------------------------------
+\begin{myslide}{c}{Basic Work Characteristics}
+
+\begin{columns}
+
+\begin{column}{1\textwidth}
+
+\begin{itemize}
+
+\item Work items (tickets and tasks) can require one or more resources with a certain level and type of technical skill.
+
+\item Work items generally represent <5 hours of work effort (distinct from total duration).
+
+\item Work items have a priority (low, medium or high) which can change over time.
+
+\item Quality – or the lack of it - is reflected through the creation of rework (in the case of tasks) and incidents (in the case of tickets).
+
+\end{itemize}
+
+\end{column}
+
+\end{columns}
+
+\end{myslide}

@@ -1,0 +1,1078 @@
+\newcommand\hmmax{0} % ok
+\newcommand\bmmax{0} % ok
+%---------------------------------------------------------
+% packages
+%---------------------------------------------------------
+\usepackage[utf8]{inputenc} % ok
+\usepackage[T1]{fontenc} % ok
+\usepackage[english]{babel} % ok
+\usepackage{csquotes} % ok
+\usepackage{amsmath} % ok
+\usepackage{amsfonts} % ok
+\usepackage{amsbsy} % ok
+\usepackage{amssymb} % ok
+\usepackage{bm} % ok
+\usepackage{blindtext} % ok
+\usepackage[nice]{nicefrac} % ok
+% \usepackage{media9}
+\usepackage{array} % ok
+\usepackage{float} % ok
+\usepackage{pifont} % ok
+\usepackage{color} % ok
+\usepackage{fancybox} % ok
+% \usepackage{animate}
+\usepackage{graphicx} % ok
+\usepackage[absolute,overlay]{textpos} % ok
+\usepackage{times} % ok
+\usepackage{setspace} % ok
+\usepackage{subcaption} % ok
+\usepackage{mathtools} % ok
+
+\usepackage{changepage} % ok
+\usepackage{tikz} % ok
+\usepackage{hyperref} % ok
+\usepackage{breakurl} % ok
+\usepackage{etoolbox} % ok
+\usepackage[restart]{parnotes} % ok
+\usepackage[style=authoryear,giveninits=true]{biblatex} % ok
+
+% \usepackage{fontawesome}
+\usepackage{fontawesome5} % ok
+
+\usepackage[stretch=10]{microtype} % ok
+
+\usepackage{multimedia} % ok
+
+\usepackage{minibox} % ok
+
+\usepackage[most]{tcolorbox} % ok  colored and framed text boxes
+
+\usepackage{booktabs} % ok
+
+\usepackage{layouts} % ok
+
+\usepackage[yyyymmdd]{datetime} % ok
+
+\usepackage{nicematrix} % ok
+
+\usepackage{cancel} % ok
+
+% \usepackage{MnSymbol} % removed during session 3
+\usepackage{mathdots} % ok
+
+\usepackage[percent]{overpic} % ok
+
+%---------------------------------------------------------
+% colors
+%---------------------------------------------------------
+\definecolor{csugold}{HTML}{C8C372}
+\definecolor{csugold}{HTML}{C8C372}
+\definecolor{niceblue}{HTML}{4D79A7}
+\definecolor{nicered}{HTML}{E15656}
+\definecolor{nicegreen}{HTML}{6DC350}
+\definecolor{nicegray}{HTML}{F2F2F2}
+\definecolor{xmediumgray}{HTML}{AAAAAA}
+\definecolor{codegreen}{HTML}{487F07}
+\definecolor{nicepink}{HTML}{EF8EDB}
+\definecolor{darkergray}{HTML}{818181}
+
+
+\newcommand{\cdigits}[1]{\textcolor{niceblue}{#1}}
+
+% \usepackage{enumitem}
+
+%---------------------------------------------------------
+% commands
+%---------------------------------------------------------
+
+% all math is display style instead of inline
+% \everymath{\displaystyle}
+
+% add bib file
+\addbibresource{../../../references.bib}
+
+\newlength\sectionsep
+\setlength\sectionsep{6pt}% default 1.875ex plus 1fill
+
+\captionsetup{aboveskip=3pt}
+\captionsetup{belowskip=0pt}
+
+
+% boxes
+\newtcolorbox{xgreen}[1]{%
+    boxrule = 1pt,
+    boxsep = 2pt,
+    breakable,
+    colframe = black,
+    enhanced jigsaw,
+    interior hidden,
+    parbox = false,
+    shadow={2mm}{-1mm}{0mm}{black!50!white},
+    title = #1,
+    fonttitle = \bfseries,
+    title style={left color=xprimarycolor!85!black,right color=xprimarycolor},
+}
+
+\newtcolorbox{xgeneralbox}[3]{%
+    boxrule = 1pt,
+    boxsep = 3pt,
+    breakable,
+    colframe = edgecolor,
+    enhanced jigsaw,
+    interior hidden,
+    parbox = false,
+    title = #1,
+    coltitle = black!85,
+    title style={left color=#2, right color=#3},
+    fontupper={\small\color{textcolor}},
+    fontlower={\small},
+    top = 0pt,
+    bottom = 0pt,
+    left = 2pt,
+    right = 2pt,
+}
+%     fonttitle = \bfseries,
+
+% REMOVED!
+% \newenvironment{myremark}
+%     {\begin{xgeneralbox}{\scalebox{0.75}{\faComment~\textbf{Remark}}}{xgraycolor}{xgraycolor}}
+%     {\end{xgeneralbox}}
+
+\newenvironment{myreview}[1]
+    {\begin{xgeneralbox}{\scalebox{0.75}{\faComment~\textbf{Review (Session #1)}}}{xgraycolor}{xgraycolor}}
+    {\end{xgeneralbox}}
+
+% \newenvironment{myfuture}
+%     {\begin{xgeneralbox}{\scalebox{0.75}{\faFastForward~\textbf{Looking Ahead}}}{niceblue!25!white}{niceblue!25!white}}
+%     {\end{xgeneralbox}}
+
+\newenvironment{myhint}
+    {\begin{xgeneralbox}{\scalebox{0.75}{\faLightbulbO~\textbf{Hint}}}{xgraycolor}{xgraycolor}}
+    {\end{xgeneralbox}}
+
+% \newenvironment{myquestion}
+%     {\begin{xgeneralbox}{\scalebox{0.75}{\faQuestionCircle~\textbf{Question}}}{nicered!25!white}{nicered!25!white}}
+%     {\end{xgeneralbox}}
+
+% \newenvironment{myimportant}
+%     {\begin{xgeneralbox}{\scalebox{0.75}{\faExclamationCircle~\textbf{Important Remark}}}{nicegreen!25!white}{nicegreen!25!white}}
+%     {\end{xgeneralbox}}
+
+\newtcolorbox{xempty}[1]{%
+    boxrule = 1pt,
+    boxsep = 2pt,
+    % breakable,
+    colframe = black,
+    enhanced jigsaw,
+    interior hidden,
+    parbox = false,
+    bottom = -7pt,
+    title = #1,
+    fonttitle = \bfseries,
+    coltitle = black!75,
+    title style={left color=xgraycolor!85!black,right color=xgraycolor},
+}
+
+\newtcolorbox{xxgreen}[1]{%
+    boxrule = 1pt,
+    boxsep = 1pt,
+    left = 3pt,
+    right = 3pt,
+    breakable,
+    colframe = black,
+    enhanced jigsaw,
+    parbox = false,
+    shadow={2mm}{-1mm}{0mm}{black!50!white},
+    title = {#1},
+    fonttitle = \bfseries,
+    title style={left color=xprimarycolor, right color=xprimarycolor},
+    colback=tcolorboxbg,
+}
+%     interior hidden,
+% title = {\centering {\hspace*{-3pt}{\parbox[][11pt][c]{0pt}{}}{#1}}},
+    % title = {\\ \centering },
+
+\newtcolorbox{xxgreencompact}{%
+    boxrule = 1pt,
+    boxsep = 0pt,
+    left = 0pt,
+    right = 0pt,
+    breakable,
+    colframe = black,
+    enhanced jigsaw,
+    interior hidden,
+    parbox = false,
+    shadow={2mm}{-1mm}{0mm}{black!50!white},
+    % title = #1,
+    % fonttitle = \bfseries,
+    % title style={left color=xprimarycolor!85!black,right color=xprimarycolor},
+}
+
+\newtcolorbox{theorembox}[1]{%
+    boxrule = 1pt,
+    boxsep = 2pt,
+    breakable,
+    colframe = black,
+    enhanced jigsaw,
+    interior hidden,
+    parbox = false,
+    title = #1,
+    fonttitle = \bfseries,
+    coltitle = black!0,
+    title style={left color=xprimarycolor!85!black, right color=xprimarycolor!80!white},
+    fontupper=\small,
+    fontlower=\small,
+    top = 0pt,
+    bottom = 0pt,
+    left = 3pt,
+    right = 3pt,
+}
+
+
+\usepackage{ragged2e} % ok
+\RaggedRight
+
+\makeatletter
+\def\@minipagerestore{\RaggedRight}
+\makeatother
+
+\newcommand{\mylinewhite}[1]{\textcolor{white}{\rule{#1}{0.8pt}}}
+
+\newsavebox{\picbox}
+\newcommand{\cutpic}[3]{
+  \savebox{\picbox}{\includegraphics[width=#2]{#3}}
+  \tikz\node [draw, rounded corners=#1, line width=0.5pt,
+    color=black, minimum width=\wd\picbox,
+    minimum height=\ht\picbox, path picture={
+      \node at (path picture bounding box.center) {
+        \usebox{\picbox}};
+    }] {};}
+
+\renewenvironment{quote}[1][1em]
+  {\itshape\begin{adjustwidth}{#1}{#1}}
+  {\end{adjustwidth}}
+
+\usepackage{accents} % ok
+\newcommand{\xub}[1]{\underaccent{\bar}{#1}}
+\newcommand{\xob}[1]{\bar{#1}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\bracket{[}{]}
+\DeclarePairedDelimiter\paren{(}{)}
+\DeclarePairedDelimiter\curl{\lbrace}{\rbrace}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\xcolor}[1]{\textsl{\textsf{#1}}}
+
+\newcommand{\pmin}{\underaccent{\bar}{\bm{P}}}
+\newcommand{\pmax}{\bar{\bm{P}}}
+
+\newcommand{\rmin}{\underaccent{\bar}{\bm{R}}}
+\newcommand{\rmax}{\bar{\bm{R}}}
+
+% \input{.config/AlgorithmStyle}
+% \import{../}{.config/AlgorithmStyle}
+
+% \input{.config/vAlgorithm}
+% \import{../}{.config/vAlgorithm}
+
+\usepackage{amsmath} % ok
+\usepackage{amsfonts} % ok
+\usepackage{amssymb} % ok
+\usepackage{setspace} % ok
+\usepackage{textcomp} % ok
+\usepackage{multicol} % ok
+
+\newcounter{NumberInTable}
+\newcommand{\LTNUM}{\stepcounter{NumberInTable}{(\theNumberInTable)}}
+
+\newcommand{\Laplace}[1]{\ensuremath{\mathcal{L}{\{#1\}}}}
+\newcommand{\InvLap}[1]{\ensuremath{\mathcal{L}^{-1}{\left[#1\right]}}}
+
+\newcommand{\xoptional}[1]{\textcolor{csugold}{#1}}
+\newcommand{\myoptional}{\xoptional{[Optional]}}
+
+\newcommand{\xtheorem}[1]{{[\textbf{\textcolor{xprimarycolor}{#1}}]}}
+
+\newcommand{\xeqspace}[1]{\quad \text{({#1})}}
+
+\newcommand{\xeq}[1]{\text{\textcolor{textcoloremph}{#1}}}
+
+\newcommand{\xeqq}[1]{\textcolor{textcoloremph}{#1}}
+
+\newcommand{\xtableau}[1]{\textcolor{niceblue}{#1}}
+
+
+\setcounter{MaxMatrixCols}{20}
+
+\newcommand{\pd}{\phantom{-}}
+
+\usepackage[normalem]{ulem} % ok
+
+
+
+% \addtobeamertemplate{block begin}{%
+%     \setlength{\textwidth}{0.9\textwidth}
+% }{}
+
+
+\addtobeamertemplate{block begin}{%
+    \centering%
+    \setlength{\textwidth}{0.85\textwidth}%
+}{}
+
+\addtobeamertemplate{block alerted begin}{%
+    \centering%
+    \setlength{\textwidth}{0.85\textwidth}%
+}{}
+
+\addtobeamertemplate{block example begin}{%
+    \centering%
+    \setlength{\textwidth}{0.85\textwidth}%
+}{}
+
+
+\BeforeBeginEnvironment{block}{\begin{adjustbox}{minipage={\linewidth}, center}}
+\AfterEndEnvironment{block}{\end{adjustbox}\vspace*{0.05in}}
+
+\usepackage{adjustbox} % ok
+
+\usepackage{multirow} % ok
+
+\newtheorem{xalgorithm}{Algorithm}
+\newtheorem{xdefinition}{Definition}
+
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+\newcommand{\obar}[1]{\bar{#1}}
+
+
+\usepackage{listings} % ok
+
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, firstnumber=1,
+    numbersep=5pt,
+    language=Matlab,
+    stringstyle=\ttfamily,
+    basicstyle=\ttfamily,
+    showstringspaces=false,
+    commentstyle=\color{nicegreen},
+    keywordstyle=\color{textcolor},
+}
+%     commentstyle=\color{codegreen},
+
+\lstset{upquote=true}
+
+\usepackage{contour} % ok
+
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+
+\newcommand{\myuline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
+\DeclareCiteCommand{\citetitle}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \usebibmacro{prenote}}
+  {\ifciteindex
+     {\indexfield{indextitle}}
+     {}%
+   \printtext[bibhyperref]{\printfield[citetitle]{labeltitle}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+% \newcommand{\reviewmaterials}{Please see the course \href{\courseurl{/files/24090855}}{Linear Algebra and Calculus Review} for resources and examples}
+
+\newcommand{\sessiontaskremark}{%
+\begin{myimportant}
+
+\begin{itemize}
+
+\item \xhy{Submit a document (.pdf {\small\faFilePdf{}} or .doc/x {\small\faFileWord}) summarizing your answers to the questions}
+
+\item Submit all code used to answer the questions
+
+\item A .zip {\small\faFileArchive{}} file containing these files is preferred if you have multiple files
+
+\item Please provide guidance on how I should review your submission if there are many files
+
+\end{itemize}
+
+\end{myimportant}%
+}%
+
+\newcommand\twodigits[1]{%
+   \ifnum#1<10 0#1\else #1\fi
+}
+
+
+\newtcolorbox{xfigbox}{%
+    boxrule = 1pt,
+    boxsep = 1pt,
+    left = 3pt,
+    right = 3pt,
+    breakable,
+    colframe = edgecolor,
+    enhanced jigsaw,
+    parbox = false,
+    shadow={2mm}{-1mm}{0mm}{black!50!white},
+    colback=tcolorboxbg,
+}
+%     title style={left color=xprimarycolor, right color=xprimarycolor},
+%     fonttitle = \bfseries,
+%     title = {#1},
+%     interior hidden,
+% title = {\centering {\hspace*{-3pt}{\parbox[][11pt][c]{0pt}{}}{#1}}},
+    % title = {\\ \centering },
+
+\newlength{\xfigwidth}
+\newcommand{\myfigbox}[2]{%
+\settowidth{\xfigwidth}{\includegraphics[scale=#2]{#1}}
+\addtolength{\xfigwidth}{20pt}
+\begin{columns}
+\begin{column}{\xfigwidth}
+\begin{xfigbox}
+\centering
+\includegraphics[scale=#2]{#1}
+\end{xfigbox}
+\end{column}
+\end{columns}%
+}
+
+\newcommand{\myfigboxmin}[2]{%
+\settowidth{\xfigwidth}{\includegraphics[scale=#2]{#1}}
+\addtolength{\xfigwidth}{20pt}
+\begin{column}{\xfigwidth}
+\begin{xfigbox}
+\centering
+\includegraphics[scale=#2]{#1}
+\end{xfigbox}
+\end{column}%
+}
+
+\newcommand{\myoverpic}[3]{%
+\settowidth{\xfigwidth}{\includegraphics[scale=#2]{#1}}
+\addtolength{\xfigwidth}{20pt}
+\begin{columns}
+\begin{column}{\xfigwidth}
+\begin{xfigbox}
+\centering
+% \includegraphics[scale=#2]{#1}
+\begin{overpic}[scale=#2]{#1}
+#3
+\end{overpic}
+\end{xfigbox}
+\end{column}
+\end{columns}%
+}
+
+\newcommand{\myoverpicmin}[3]{%
+\settowidth{\xfigwidth}{\includegraphics[scale=#2]{#1}}
+\addtolength{\xfigwidth}{20pt}
+\begin{column}{\xfigwidth}
+\begin{xfigbox}
+\centering
+% \includegraphics[scale=#2]{#1}
+\begin{overpic}[scale=#2]{#1}
+#3
+\end{overpic}
+\end{xfigbox}
+\end{column}%
+}
+
+\newcommand{\xversion}{\textcolor{textcoloremph}{Version \today{\ }{@}\currenttime}}
+
+\newcommand{\myversion}{%
+\begin{textblock}{6}(11.6455,15.5325)
+\scriptsize\xversion
+\end{textblock}%
+}
+
+\def\hy#1{\parbox{\linewidth}{#1}} % helper for using command several times
+
+\newcommand{\matlabfunctionmin}[2]{%
+\def \matlabfunctiontext {\detokenize{#1}}%
+\def \matlabfunctionurl {#2}%
+\texttt{\href{\matlabfunctionurl}{\matlabfunctiontext}}%
+}%
+
+\newcommand{\matlabfunction}[2]{%
+\def \matlabfunctiontext {\detokenize{#1}}
+\def \matlabfunctionurl {#2}
+\xmatlabfunction{\href{\matlabfunctionurl}{\matlabfunctiontext}}
+}
+
+\newcommand{\xmatlabfunction}[1]{%
+\begin{columns}%
+\begin{column}{0.08\textwidth}\centering
+\vspace*{0.04in}
+\if\darkmode1
+\includegraphics[width=\textwidth]{../../../.config/figures/matlab-3-dark.pdf}
+\else
+\includegraphics[width=\textwidth]{../../../.config/figures/matlab-3.pdf}
+\fi
+\small
+\texttt{#1}
+\end{column}%
+\end{columns}%
+}
+
+% \newcommand*{\eqcolorboxed}[1]{%
+% \colorbox{xprimarycolor!05!white}{$\displaystyle{#1}$}
+% }%
+
+\newcommand*{\eqcolorboxed}[1]{%
+\colorbox{bgcolorlight}{$\displaystyle{#1}$}
+}%
+
+% Syntax: \colorboxed[<color model>]{<color specification>}{<math formula>}
+\newcommand*{\colorboxed}{}
+\def\colorboxed#1#{%
+  \colorboxedAux{#1}%
+}
+\newcommand*{\colorboxedAux}[3]{%
+  % #1: optional argument for color model
+  % #2: color specification
+  % #3: formula
+  \begingroup
+    \colorlet{cb@saved}{.}%
+    \color#1{#2}%
+    \boxed{%
+      \color{cb@saved}%
+      #3%
+    }%
+  \endgroup
+}
+
+\NiceMatrixOptions{
+code-for-first-row = \color{textcoloremph},
+code-for-last-row = \color{textcoloremph},
+code-for-first-col = \color{textcoloremph},
+code-for-last-col = \color{textcoloremph}
+}
+
+\makeatother
+\let\OldNabla\nabla
+\RenewDocumentCommand{\nabla}{e_}{%
+    \OldNabla
+    \IfValueT{#1}{%
+        _{\!#1\,}
+    }%
+}
+\makeatletter
+
+\newcommand{\myurlhref}[1]{\textcolor{textcoloremph}{{\footnotesize\faLink}\,#1}}
+\newcommand{\myurl}[1]{\textcolor{textcoloremph}{{\footnotesize\faLink}\,\url{#1}}}
+\newcommand{\myhref}[2]{\textcolor{textcoloremph}{{\footnotesize\faLink}\,\href{#1}{#2}}}
+% \newcommand{\myvideourl}[1]{\textcolor{textcoloremph}{\faVideo~\url{#1}}}
+
+\newcommand{\myurlmin}[1]{\textcolor{textcoloremph}{{\footnotesize\faLink}\,\href{https://\detokenize{#1}}{\detokenize{#1}}}}
+
+
+\newcommand{\myvideourl}[1]{\textcolor{textcoloremph}{{\footnotesize\faVideo}\,\href{https://\detokenize{#1}}{\detokenize{#1}}}}
+
+\newcommand{\xneed}[1]{\textcolor{red}{(#1)}}
+
+\newcommand{\myparnotespace}{\hfill\null}
+
+\newcommand{\fulllineparnote}[1]{\parnote{\makebox[\textwidth][l]{#1}}}
+
+\newcommand{\ec}[1]{\xeqq{\faStar{} Extra credit ({#1} pts):}}
+
+% \newcommand*{\tran}{^{\mkern-1.5mu\mathsf{T}}}
+% \newcommand*{\tran}{^\top}
+\newcommand*{\tran}{^{\intercal}}
+
+
+
+\newcommand{\tv}[1]{\textcolor{nicered}{#1}}
+
+%------------------
+% semester-specific commands
+\newcommand{\courseid}{170091}
+\newcommand{\courseurl}[1]{https://colostate.instructure.com/courses/\courseid#1}
+
+\newcommand{\reviewmaterialsurl}{\href{\courseurl{/files/28134160}}{\textcolor{textcoloremph}{{\footnotesize\faLink}~Linear Algebra and Calculus Review}}}
+
+\newcommand{\reviewmaterials}{Please see the course \reviewmaterialsurl{} for resources and examples}
+
+
+
+
+% \usepackage{letltxmacro}
+% \usepackage{pgffor}
+
+
+% %% https://tex.stackexchange.com/questions/14393/how-keep-a-running-list-of-strings-and-then-process-them-one-at-a-time
+% \newcommand\FigList{}
+% \newcommand\AddFigToList[1]{\edef\FigList{\FigList#1,}}
+
+% \LetLtxMacro{\OldIncludegraphics}{\includegraphics}
+% \renewcommand{\includegraphics}[2][]{%
+%     \AddFigToList{#2}%
+%     \OldIncludegraphics[#1]{#2}%
+% }
+
+% \newcommand*{\ShowListOfFigures}{%
+%     \typeout{Figures included were}%
+%     \foreach \x in \FigList {%
+%         \par\x% <-- uncomment if you want the list in the PDF as well
+%         \typeout{ \x}
+%     }%
+% }
+% \AtEndDocument{\ShowListOfFigures}
+
+% \newcommand{\listtermsname}{Terms}
+% \newlistof{listofterms}{lot}{\listtermsname}
+
+% \usepackage{tocloft}
+
+
+\usepackage{xparse} % ok
+
+\ExplSyntaxOn
+
+\NewDocumentCommand{\createlist}{m}
+ {
+  \seq_new:c { g_mo_list_#1_seq }
+ }
+\NewDocumentCommand{\additem}{mmm}
+ {
+  \seq_gput_right:cn { g_mo_list_#1_seq } { \__mo_list_do:nn {#2}{#3} }
+ }
+\NewDocumentCommand{\makelist}{O{}m}
+ {
+  \group_begin:
+  \keys_set:nn { mo/list } { #1 }
+  \l__mo_list_pre_tl
+  \seq_use:cn { g_mo_list_#2_seq } { }
+  \l__mo_list_post_tl
+  \group_end:
+ }
+\keys_define:nn { mo/list }
+ {
+  pre     .tl_set:N  = \l__mo_list_pre_tl,
+  post    .tl_set:N  = \l__mo_list_post_tl,
+  command .code:n    = \cs_set:Nn \__mo_list_do:nn { #1 },
+  pre     .initial:n = { \begin{itemize}\itemsep=3pt },
+  post    .initial:n = { \end{itemize} },
+  command .initial:n = \item[{\small\faHashtag}] {#1} {#2},
+ }
+\ExplSyntaxOff
+
+% %
+% \newcommand{\pagetarget}[2]{%
+%   \phantomsection%
+%   \label{#1}%
+%   \hypertarget{#1}{#2}%
+% }
+
+\makeatletter
+\newcommand\needlabel[1]{%
+  \@ifundefined{r@#1}{%
+    \label{#1}%
+  }{%
+    % \ref{KN:#1}%
+  }%
+}
+\makeatother
+
+%
+% \newcommand{\pagetarget}[2]{%
+%   \phantomsection%
+%   \label{#1}%
+%   \hypertarget{#1}{#2}%
+% }
+\makeatletter
+\newcommand{\pagetarget}[2]{%
+  \phantomsection%
+  % \@ifundefined{r@#1}{%
+    \label{#1}%
+  % }{%
+   \hypertarget{#1}{#2}%
+  % }%
+}
+\makeatother
+
+
+\newcommand{\xhiformat}[1]{\textit{\textcolor{textcoloremph}{#1}}}
+
+\newcommand{\xhiname}[1]{\textcolor{textcoloremph}{\small\faHashtag}\xhiformat{#1}}
+
+% https://tex.stackexchange.com/questions/252566/calculate-the-hash-md5-or-otherwise-of-a-string
+% \newcommand{\xhilabel}[1]{#1}
+\newcommand{\xhilabel}[1]{\pdfmdfivesum{#1}}
+
+% \newcommand{\xhi}[1]{\additem{listone}{\hyperlink{#1}{\xhiformat{#1}}}{\text{ is on page }\pageref{#1}}\pagetarget{#1}{\xhiformat{#1}}}
+% \newcommand{\xhi}[1]{\additem{listone}{\hyperlink{\xhilabel{#1}}{\xhiformat{#1}}}{\text{ is on Slide }\ref{\xhilabel{#1}}}\pagetarget{\xhilabel{#1}}{\xhiname{#1}}}
+\newcommand{\xhi}[1]{\additem{listone}{\hyperlink{\xhilabel{#1}}{\xhiformat{#1}}}{\text{ is on Slide }\ref{\xhilabel{#1}}}\pagetarget{\xhilabel{#1}}{\xhiname{#1}}}
+
+
+\createlist{listone} % A description list specifically
+
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+\newcommand{\meqcounter}{\addtocounter{equation}{-1}}
+
+
+\renewcommand{\qedsymbol}{\textcolor{textcoloremph}{\openbox}}
+
+% \providecommand{\udots}{\Udots}
+% \makeatletter
+% \DeclareRobustCommand{\Udots}{%
+%   \vcenter{\offinterlineskip
+%     \halign{%
+%       \hbox to .8em{##}\cr
+%       \hfil.\cr\noalign{\kern.2ex}
+%       \hfil.\hfil\cr\noalign{\kern.2ex}
+%       .\hfil\cr}%
+%   }%
+% }
+% \makeatother
+
+\def\udots#1{\cdot^{\cdot^{\cdot^{#1}}}}
+
+
+% push something to the bottom of the slide
+\newcommand{\btVFill}{\vskip0pt plus 1filll}
+
+
+% itemize hyphenation command
+\newcommand{\xhy}[1]{\parbox[t]{\linewidth}{\strut#1\strut}\par
+}
+
+
+%---------------------------------------------------------
+% ip stuff
+%---------------------------------------------------------
+% https://www.privacypolicies.com/blog/sample-copyright-notice/
+
+\newcommand{\xcopyright}{\textcolor{textcoloremph}{\textcopyright{} \the\year{} Daniel R. Herber. All Rights Reserved.}}
+
+\newcommand{\mycopyright}{%
+\begin{textblock}{6}(0.6455,15.5325)
+\scriptsize\xcopyright
+\end{textblock}%
+}
+
+%---------------------------------------------------------
+% final slides
+%---------------------------------------------------------
+
+% term slides
+\newcommand{\termslides}{%
+\miniframesoff%
+\bgroup%
+\section*{\texorpdfstring{\faHashtag}{Terms}}%
+\begin{frame}[c,allowframebreaks]{\xtitlemark Terms}%
+\label{sec:terms}%
+\makelist{listone}
+
+\end{frame}%
+\egroup%
+\miniframeson%
+}
+
+% reference slides
+\newcommand{\refslides}{%
+\miniframesoff%
+\bgroup%
+\section*{\texorpdfstring{\scalebox{0.87485779}{\faBookmark}}{References}}%
+\begin{frame}[allowframebreaks]{\xtitlemark References}%
+\label{sec:references}%
+% \nocite{*}
+\printbibliography[heading=none]
+\end{frame}%
+\egroup%
+\miniframeson%
+}
+
+
+%---------------------------------------------------------
+% customized bookmarks in the PDF
+%---------------------------------------------------------
+% https://tex.stackexchange.com/questions/74696/global-bookmark-settings
+% \hypersetup{
+%   bookmarksnumbered=true
+% }
+\usepackage{bookmark}[2019/12/03] % ok
+\bookmarksetup{
+  open,
+  openlevel=3,
+  addtohook={%
+    \ifnum\bookmarkget{level}=2%
+      \bookmarksetup{bold}%
+    \fi
+  },
+}
+
+
+\usepackage{setspace} % ok
+
+
+%---------------------------------------------------------
+\newenvironment{myslide}[2]
+{\begin{frame}[#1]%
+\frametitle{{\xtitlemark #2}}%
+}%
+{\parnotes\end{frame}}
+% \newenvironment{myslide}[2]
+% {\begin{frame}[#1]{\xtitlemark #2}%
+% \frametitle{\xtitlemark #2}%
+% }%
+% {\parnotes\end{frame}}
+
+%---------------------------------------------------------
+\newenvironment{myslidefragile}[2]
+{\begin{frame}[fragile,environment=myslidefragile,#1]%
+\frametitle{{\xtitlemark {#2}}}%
+}%
+{\parnotes\end{frame}}
+
+%---------------------------------------------------------
+\newenvironment{mytheorem}[1]
+{\setcounter{theorem}{\insertframenumber-1}
+\begin{theorem}[#1]
+}%
+{\end{theorem}}
+
+%---------------------------------------------------------
+\newenvironment{mydefinition}[1]
+{\setcounter{xdefinition}{\insertframenumber-1}
+\begin{xdefinition}[#1]
+}%
+{\end{xdefinition}}
+
+%---------------------------------------------------------
+\newenvironment{myalgorithm}[1]
+{\setcounter{xalgorithm}{\insertframenumber-1}
+\begin{xalgorithm}[#1]
+}%
+{\end{xalgorithm}}
+
+%---------------------------------------------------------
+\newcommand{\myfaEdit}{{\small\faEdit}\,}
+
+
+
+
+
+
+
+
+%---------------------------------------------------------
+% \usepackage{awesomebox}
+% \setlength{\aweboxvskip}{0pt}
+
+% % \newenvironment{myremarknew}
+% % {\begin{awesomeblock}[black!85][\abLongLine]{2pt}{\faComment}{xgraycolor}\small
+% % }%
+% % {\end{awesomeblock}}
+
+% \usepackage{tabularx}
+% \usepackage{colortbl}
+% \usepackage{makecell}
+
+% \newcolumntype{z}{>{\small\columncolor{xgraycolor}}X}
+% \newcolumntype{?}{!{{\vrule width 2pt}}}
+
+% \newenvironment{myremarknew}{\bgroup%
+% \tabularx{\linewidth}{p{0.08\linewidth}!{\color{black!85}\vrule width 2pt}z}
+% \begin{minipage}{0.08\linewidth}\color{black!85}\small\centering Remark \\ \faComment\end{minipage} &}
+% {\endtabularx\egroup}
+
+% \newenvironment{myquestionnew}{\bgroup%
+% \tabularx{\linewidth}{p{0.08\linewidth}!{\color{nicered}\vrule width 2pt}z}%
+% \begin{minipage}{0.08\linewidth}\color{nicered}\small\centering Question \\ \faQuestionCircle\end{minipage} & }
+% {\endtabularx\egroup}
+
+% % \newenvironment{myfuturenew}{\bgroup%
+% % \tabularx{\linewidth}{p{1.1cm}!{\color{niceblue}\vrule width 2pt}z}%
+% % \vspace*{-\parskip}%
+% % \fcolorbox{red}{gray}{\begin{minipage}{1.1cm}\color{niceblue}\small\centering Looking \\ Ahead \\ \faFastForward\end{minipage}} & }
+% % {\endtabularx\egroup}
+
+% % \newenvironment{myfuturenew}{\bgroup%
+% % \tabularx{\linewidth}{p{0.08\linewidth}!{\color{niceblue}\vrule width 2pt}z}%
+% % \vspace{-0.8\baselineskip} \textcolor{niceblue}{\centering\footnotesize Looking  Ahead \faFastForward} & }
+% % {\endtabularx\egroup}
+
+% % \newenvironment{myfuturenew}{\bgroup%
+% % \tabularx{\linewidth}{p{0.08\linewidth}!{\color{niceblue}\vrule width 2pt}z}%
+% % \scalebox{0.8}{%
+% % \begin{tikzpicture}
+% % \node[draw=none, align=center, text width=0.08\linewidth, text=niceblue,] at (0,0) {Looking  Ahead \faFastForward};
+% % \end{tikzpicture}} & }
+% % {\endtabularx\egroup}
+
+
+% \newenvironment{myfuturenew}{\bgroup%
+% \tabularx{\linewidth}{p{0.08\linewidth}!{\color{niceblue}\vrule width 2pt}z}%
+% \makecell{\textcolor{niceblue}{\small Looking\\  Ahead\\ \faFastForward}} & }
+% {\endtabularx\egroup}
+
+
+
+% % % \textcolor{black!85}{\textbf{\footnotesize Remark}}
+
+% % \newtcolorbox{xremarknew}{%
+% %   sidebyside,
+% %   sidebyside align=top,
+% %   lefthand width=1.1cm,
+% %   sidebyside gap=14pt,
+% %   lower separated=true,
+% %   enhanced,
+% %   bicolor,
+% %   fontupper={\color{black!85}},
+% %   fontlower={\small\color{textcolor}},
+% %   sharp corners,
+% %   segmentation style = {solid, line width = 2pt},
+% %   top = 2pt,
+% %   bottom = 2pt,
+% %   left=0pt,
+% %   right=4pt,
+% %   colback=xgraycolor,
+% %   colbacklower=green!10,
+% %   frame hidden,
+% % }
+% % %   blanker,
+% % %   frame hidden,
+% %   % colback=white,
+% % %   borderline vertical={1pt}{0pt}{black},
+
+% % % leftrule=18mm,
+% % %   segmentation style={draw=black,solid},
+% %   % colframe=yellow!80!black,
+% % %   % boxrule=4pt,
+% % %   
+% % %   arc=0pt,
+% % % width=\textwidth,
+
+% % \newenvironment{myremarknew}
+% %     {\begin{xremarknew} \centering {\footnotesize\textbf{Remark}} \\ \faComment \tcblower}
+% %     {\end{xremarknew}}
+
+
+
+
+\newtcolorbox{xawesomebox}[3]{%
+    sidebyside,
+    sidebyside adapt=left,
+    sidebyside align=center seam,
+    bicolor,
+    overlay={\draw[solid,#1,line width=2pt] (segmentation.north)--(segmentation.south);},
+    center,
+    % segmentation style={solid,line width=2pt},
+    % boxrule=0pt,
+    % arc=0pt,
+    sidebyside gap=3.5mm,
+    left=1mm,
+    right=1mm,
+    top=1.5mm,
+    bottom=1.5mm,
+    boxsep=0mm,
+    fontupper={\small\color{#1}}, % niceblue!25!white
+    fontlower={\small\color{textcolor}},
+    frame hidden,
+    colback=bgcolor,
+    colbacklower=bgcolorlight,
+}
+
+
+
+\usepackage{environ}% ok http://ctan.org/pkg/environ
+
+\newcommand{\impcmd}[5]{\begin{adjustwidth}{-9mm}{0mm}
+\tcbsidebyside[bicolor,
+sidebyside adapt=left,
+sidebyside align=center seam,
+overlay={\draw[solid,#4,line width=2pt] (segmentation.north)--(segmentation.south);},
+center,
+% boxrule=0pt,
+arc=0pt,
+sidebyside gap=3.5mm,
+left=1mm,
+right=1mm,
+top=1.5mm,
+bottom=1.5mm,
+boxsep=0mm,
+fontupper={\small\color{#4}}, % niceblue!25!white
+fontlower={\small\color{textcolor}},
+frame hidden,
+colback=bgcolor,
+colbacklower=bgcolorlight,
+before skip=0.25\baselineskip,
+after skip=0.35\baselineskip,
+]{%
+{\begin{minipage}{\widthof{#1}}\centering \small
+#2\\\vspace{1mm} \scalebox{1.25}{#3}
+\end{minipage}}
+}{%
+#5
+}
+\end{adjustwidth}}
+
+\NewEnviron{myimportant}{%
+\impcmd{Important}{Important}{\faExclamationCircle}{nicegreen}{\BODY}}
+
+\NewEnviron{myremark}{%
+\impcmd{Remark}{Remark}{\faComment}{niceblue}{\BODY}}
+
+\NewEnviron{myfuture}{%
+\impcmd{Looking}{Looking\\ Ahead}{\faFastForward}{nicepink}{\BODY}}
+
+\NewEnviron{myquestion}{%
+\impcmd{Question}{Question}{\faQuestionCircle}{nicegreen}{\BODY}}
+
+\NewEnviron{myoptionalbox}{%
+\impcmd{Optional}{Optional}{\faComment}{niceblue}{\BODY}}
+
+
+\newcommand{\myiconstyle}[1]{\textcolor{xprimarycolor!75}{\scalebox{5}{#1}}}
+
+\newcommand{\mysummaryicon}{\textcolor{xprimarycolor!75}{\scalebox{5}{\faLightbulb[regular]}}}
+
+\newcommand{\mytaskicon}{\textcolor{xprimarycolor!75}{\scalebox{5}{\faEdit[regular]}}}
+
+\newcommand{\myreadingicon}{\textcolor{xprimarycolor!75}{\scalebox{5}{\faBook}}}
+
+\newcommand{\myreferenceicon}{\textcolor{xprimarycolor!75}{\scalebox{5}{\faBookmark}}}
+
+\newcommand{\myoutlineicon}{\textcolor{xprimarycolor!75}{\scalebox{5}{\faListOl}}}
+
+% \begin{adjustwidth}{-9mm}{0mm}
+% \tcbsidebyside[bicolor,
+% sidebyside adapt=left,
+% sidebyside align=center seam,
+% overlay={\draw[solid,nicegreen,line width=2pt] (segmentation.north)--(segmentation.south);},
+% center,
+% % segmentation style={solid,line width=2pt},
+% % boxrule=0pt,
+% % arc=0pt,
+% sidebyside gap=3.5mm,
+% left=1mm,
+% right=1mm,
+% top=1.5mm,
+% bottom=1.5mm,
+% boxsep=0mm,
+% fontupper={\small\color{nicegreen}}, % niceblue!25!white
+% fontlower={\small\color{textcolor}},
+% frame hidden,
+% colback=bgcolor,
+% colbacklower=bgcolorlight,
+% ]{%
+% {\begin{minipage}{\widthof{Important}}\centering \small
+% Important\\ Remark\\\vspace{1mm} \scalebox{1.25}{\faExclamationCircle}
+% \end{minipage}}
+% }{%
+% Interior points are only ``interior'' to the inequality constraints. If equality constraints are present, any feasible point will satisfy them. Since it is not possible to be interior to an equality constraint, some authors use the term \xhi{relative interior points}.
+% }
+% \end{adjustwidth}
+

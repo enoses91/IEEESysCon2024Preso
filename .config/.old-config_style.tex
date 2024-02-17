@@ -1,0 +1,509 @@
+%----------------------------------------------------------------
+% define colors
+%----------------------------------------------------------------
+% define fixed colors (same in both light and dark mode)
+\definecolor{fixedtextcolor}{HTML}{FFFFFF} % fixed text color
+\definecolor{fixedbgcolor}{HTML}{1E4D2B} % fixed background color
+\definecolor{tcolorboxbg}{HTML}{FFFFFF}
+
+% define dark/light mode-specific colors
+\if\darkmode1
+
+  \definecolor{textcolor}{HTML}{FFFFFF} % main text color
+  \definecolor{textcolorlight}{HTML}{CCCCCC} % secondary text color
+  \definecolor{textcoloremph}{HTML}{C8C372} % emphasis text color
+  \definecolor{bgcolor}{HTML}{202020} % main background color
+  \definecolor{bgcolorlight}{HTML}{383838} % secondary background color
+  \colorlet{edgecolor}{black!15} % edge color for boxes
+
+\else
+
+  \definecolor{textcolor}{HTML}{000000} % main text color
+  \definecolor{textcolorlight}{HTML}{1E4D2B} % secondary text color
+  \definecolor{textcoloremph}{HTML}{1E4D2B} % emphasis text color
+  \definecolor{bgcolor}{HTML}{FFFFFF} % main background color
+  \definecolor{bgcolorlight}{gray}{0.95} % secondary background color
+  \colorlet{edgecolor}{black!85} % edge color for boxes
+
+\fi
+
+% main colors
+\definecolor{xprimarycolor}{HTML}{1E4D2B} % csu green
+\definecolor{xgraycolor}{gray}{0.95}
+
+% \definecolor{tboxcolorbg}{HTML}{FFFFFF}
+
+%----------------------------------------------------------------
+% set colors
+%----------------------------------------------------------------
+% dark/light dependent
+\setbeamercolor{title}{fg=textcolor, bg=}
+\setbeamercolor{institute}{fg=textcolor, bg=bgcolor}
+\setbeamercolor{background canvas}{bg=bgcolor}
+\setbeamercolor{normal text}{fg=textcolor}
+\setbeamercolor{titlelike}{fg=textcolor,bg=}
+\setbeamercolor{block body}{bg=bgcolorlight, fg=textcolor}
+\setbeamercolor{frametitle}{fg=textcolor, bg=}
+\setbeamercolor{section in toc}{fg=textcolor}
+\setbeamercolor{subsection in toc}{fg=textcolorlight}
+
+
+\setbeamercolor{enumerate item}{fg=textcoloremph}
+\setbeamercolor{itemize item}{fg=textcoloremph}
+\setbeamercolor{local structure}{fg=textcoloremph}
+\setbeamercolor{caption name}{fg=textcoloremph}
+\setbeamercolor{footlinecolor}{fg=textcoloremph,bg=}
+
+\setbeamercolor{bibliography item}{fg=textcoloremph}
+\setbeamercolor{bibliography entry author}{fg=textcolor}
+\setbeamercolor{bibliography entry title}{fg=textcoloremph}
+% \setbeamercolor{bibliography entry location}{fg=orange}
+\setbeamercolor{bibliography entry note}{fg=textcolor}
+
+% fixed
+\setbeamercolor{block title}{bg=fixedbgcolor, fg=fixedtextcolor}
+% \setbeamercolor{mini frame}{fg=fixedbgcolor, bg=fixedtextcolor}
+
+% \setbeamercolor{structure}{fg=xprimarycolor,bg=}
+% \setbeamercolor{structure}{fg=black,bg=} % ????
+
+\if\darkmode1
+
+  % \definecolor{tboxcolor}{HTML}{FFFFFF}
+  % \colorlet{tboxcolorborder}{black!15}
+
+\else
+
+  % \definecolor{tboxcolor}{HTML}{000000}
+  % \colorlet{tboxcolorborder}{black!85}
+
+\fi
+
+
+%----------------------------------------------------------------
+% new and redefined commands
+%----------------------------------------------------------------
+% footnote formatting
+% \renewcommand{\parnotefmt}[1]{\vfill\centerline{\colorbox{bgcolorlight}{\parbox{\textwidth}{\footnotesize\noindent #1}}}}
+\renewcommand{\parnotefmt}[1]{\vfill\centerline{\colorbox{bgcolorlight}{\parbox{\textwidth}{\footnotesize\noindent #1}}}}
+
+% footnote marker formatting
+\renewcommand{\parnotecusmarkfmt}[1]{{\color{textcoloremph}\textsuperscript{#1}}}
+
+% line command
+\newcommand{\myline}[1]{\begin{center}\textcolor{textcoloremph}{\rule{#1}{0.8pt}}\end{center}}
+
+% title mark
+% \newcommand{\xtitlemark}{\textcolor{textcoloremph}{\faLongArrowRight}~}
+\newcommand{\xtitlemark}{\textcolor{textcoloremph}{\faLongArrowAltRight}~}
+
+% circled command
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{%
+\node[shape=circle,draw,inner sep=2pt, line width=0.5mm] (char) {\large#1};}\vspace{0.2in}\\%
+}
+
+% \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+    % \node[shape=circle,draw,inner sep=2pt, line width=0.5mm] (char) {\large#1};}}
+
+% section page command
+% \newcommand{\xsectionpage}[1]{
+% \miniframesoff
+% \bgroup
+% \setbeamercolor{background canvas}{bg=fixedbgcolor}
+% \begin{frame}[noframenumbering,plain]
+% % \transdissolve
+% \begin{columns}
+% \column{0.90\textwidth}
+% \centering
+% \vspace*{-1cm}
+% \begin{spacing}{2}
+% \textcolor{fixedtextcolor}{\Huge{#1}}
+% \end{spacing}
+% \end{columns}
+% \end{frame}
+% \egroup
+% \miniframeson
+% }
+
+\newcommand{\xsectionpage}[1]{
+\miniframesoff
+\bgroup
+\setbeamercolor{background canvas}{bg=fixedbgcolor}
+\begin{frame}[noframenumbering,plain]
+
+\begin{tikzpicture}[overlay, remember picture]
+\node[anchor=center] at (current page.center) {
+\begin{beamercolorbox}[center]{title}
+\vspace*{-0.7in}%
+\begin{columns}%
+\column{0.90\textwidth}%
+\centering%
+\Huge%
+\color{fixedtextcolor}%
+{#1}%
+\end{columns}%
+\end{beamercolorbox}};
+\end{tikzpicture}
+
+\end{frame}
+\egroup
+\miniframeson
+
+% \begin{frame}[noframenumbering,plain]
+% % \transdissolve
+% \begin{columns}
+% \column{0.90\textwidth}
+% \centering
+% \vspace*{-1cm}
+% \begin{spacing}{2}
+% \textcolor{fixedtextcolor}{\Huge{#1}}
+% \end{spacing}
+% \end{columns}
+% \end{frame}
+
+}
+
+%----------------------------------------------------------------
+% formatting changes
+%----------------------------------------------------------------
+% equation number formatting
+\makeatletter
+\def\tagform@#1{\maketag@@@{\textcolor{textcoloremph}{(\ignorespaces#1\unskip\@@italiccorr)}}}
+\makeatother
+
+% itemize formatting
+\setbeamertemplate{itemize item}[circle]
+% \setbeamertemplate{itemize subitem}[\scriptsize$\blacktriangleright$]
+% \setbeamertemplate{itemize subsubitem}[ball]
+\setbeamertemplate{itemize/enumerate body begin}{\normalsize}
+\setbeamertemplate{itemize/enumerate subbody begin}{\normalsize}
+
+
+% \setbeamertemplate{enumerate item}{\insertenumlabel.}
+\setbeamertemplate{enumerate item}{(\alph{enumi})}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%------------------------------
+% custom commands
+%------------------------------
+
+
+% references
+\newcommand{\xref}[1]{\textcolor{textcoloremph}{#1}}
+
+% footnote marks
+\newcommand{\xfootnotemark}[1]{\textcolor{textcoloremph}{\textsuperscript{#1}}}
+
+
+
+
+
+% list item color changer
+\newcommand{\itemcolor}[1]{
+  \renewcommand{\makelabel}[1]{\color{#1}\hfil ##1}}
+
+% footnote text command
+% \newcommand{\xfootnotetext}[1]{\let\thefootnote\relax\footnote[frame]{#1}\addtocounter{footnote}{-1}\let\thefootnote\svthefootnote}
+
+
+
+%------------------------------
+% formatting commands
+%------------------------------
+\mode<presentation>
+{
+	\useinnertheme[]{circles}
+	\useoutertheme[footline=authortitle,subsection=false]{miniframes}
+	\usecolortheme{whale}
+	\setbeamercolor*{palette primary}{use=structure, fg=fixedtextcolor, bg=xprimarycolor}
+	\setbeamercolor*{palette secondary}{use=structure, fg=fixedtextcolor, bg=xprimarycolor}
+	\setbeamercolor*{palette tertiary}{use=structure, fg=fixedtextcolor, bg=xprimarycolor}
+	\usefonttheme[onlymath]{serif}
+	% \usefonttheme{serif}
+}
+
+\setbeamertemplate{enumerate item}{%
+  \usebeamercolor[bg]{item projected}%
+  \color{bg}\normalsize\insertenumlabel.%
+}
+
+
+% table of contents formatting
+\setbeamertemplate{sections/subsections in toc}[sections numbered]
+
+% footer formatting (only slide number)
+% \setbeamertemplate{footline}{
+% \begin{beamercolorbox}[sep=0.5em, wd=\paperwidth, leftskip=0.2cm, rightskip=0.2cm]{footlinecolor}
+% \hfill \scriptsize{\insertframenumber}
+% \end{beamercolorbox}
+% }
+\setbeamertemplate{footline}{}
+
+% first page formatting
+
+
+
+\setbeamerfont{title}{size=\huge}
+\setbeamerfont{institute}{size=\footnotesize}
+\setbeamerfont{date}{size=\footnotesize}
+
+% footnote formatting
+
+\setbeamercolor{footnote}{fg=xprimarycolor,bg=}
+\setbeamercolor{footnote mark}{fg=xprimarycolor,bg=}
+\setbeamerfont{footnote}{size=\scriptsize}
+% NEED?
+% https://tex.stackexchange.com/questions/30720/footnote-without-a-marker
+% \newcommand\blfootnote[1]{%
+%   \begingroup
+%   \renewcommand\thefootnote{}\footnote{#1}%
+%   \addtocounter{footnote}{-1}%
+%   \endgroup
+% }
+
+% remove navigation bar
+\beamertemplatenavigationsymbolsempty
+
+% add logo to bottom right corner
+% \logo{%
+%    \includegraphics[width=0.75cm,height=0.75cm,keepaspectratio]{preamble/uiuc_logo.pdf}~%
+% }
+
+% uncover everything in a step-wise fashion
+%\beamerdefaultoverlayspecification{<+->}
+
+
+\makeatletter
+\setbeamertemplate{headline}
+{%
+  \vskip-0.6ex
+  \begin{beamercolorbox}{section in head/foot}
+  \vskip2pt\insertnavigation{\paperwidth}\vskip2pt
+  \end{beamercolorbox}%
+}
+\makeatother
+
+% ?
+\makeatletter
+\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry
+\def\beamer@writeslidentry@miniframesoff{%
+  \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
+  {%else
+    % removed \addtocontents commands
+    \clearpage\beamer@notesactions%
+  }
+}
+\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
+\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+\makeatother
+
+% avoid line breaks in bib
+% https://stackoverflow.com/questions/57382286
+\setbeamertemplate{bibliography entry article}{}
+\setbeamertemplate{bibliography entry title}{}
+\setbeamertemplate{bibliography entry location}{}
+\setbeamertemplate{bibliography entry note}{}
+
+% set bib icon
+% \setbeamertemplate{bibliography item}[text]
+\renewcommand{\pgfuseimage}[1]{\raisebox{0.04in}{\faBookmark}}
+
+% disable months and days
+\AtEveryBibitem{\clearfield{month}}
+\AtEveryBibitem{\clearfield{day}}
+
+% disable pages
+\AtEveryBibitem{\clearfield{pages}}
+
+% disable address
+\AtEveryBibitem{\clearlist{location}}
+
+% disable in:
+\renewbibmacro{in:}{}
+
+% customize doi
+% https://tex.stackexchange.com/questions/446145
+\DeclareFieldFormat{doi}{%
+	\color{textcolorlight}%
+	DOI\addcolon\space
+	\ifhyperref
+	{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+	{\nolinkurl{#1}}}
+\DeclareFieldFormat{url}{%
+	\color{textcolorlight}%
+	URL\addcolon\space
+	\ifhyperref
+	{\href{#1}{\nolinkurl{#1}}}
+	{\nolinkurl{#1}}}
+
+% change url style
+% https://tex.stackexchange.com/questions/79051
+% \renewcommand\UrlFont{\rmfamily}
+\renewcommand\UrlFont{\sffamily}
+
+% remove final full stop
+% https://tex.stackexchange.com/questions/187443
+\renewcommand{\finentrypunct}{}
+
+%
+\DeclareNameAlias{sortname}{first-last}
+
+%
+% https://tex.stackexchange.com/questions/203764
+\renewcommand*{\bibfont}{\small}
+
+
+
+%
+% https://tex.stackexchange.com/questions/28736
+\usepackage[para]{footmisc}
+
+
+%
+\setbeamertemplate{frametitle continuation}[from second][(Continued)]
+
+
+%
+\makeatletter
+\def\sectionentry#1#2#3#4#5{% section number, section title, page
+  \ifnum#5=\c@part%
+  \beamer@section@set@min@width
+  \box\beamer@sectionbox\hskip\sectionsep%original: 1.875ex plus 1fill%
+  \beamer@xpos=0\relax%
+  \beamer@ypos=1\relax%
+  \setbox\beamer@sectionbox=
+  \hbox{\def\insertsectionhead{#2}%
+    \def\insertsectionheadnumber{#1}%
+    \def\insertpartheadnumber{#5}%
+    {%
+      \usebeamerfont{section in head/foot}\usebeamercolor[fg]{section in head/foot}%
+      \ifnum\c@section=#1%
+        \hyperlink{Navigation#3}{{\usebeamertemplate{section in head/foot}}}%
+      \else%
+        \hyperlink{Navigation#3}{{\usebeamertemplate{section in head/foot shaded}}}%
+      \fi}%
+  }%
+  \ht\beamer@sectionbox=1.875ex%
+  \dp\beamer@sectionbox=0.75ex%
+  \fi\ignorespaces}
+\def\insertnavigation#1{%
+  \vbox{{%
+    \usebeamerfont{section in head/foot}\usebeamercolor[fg]{section in head/foot}%
+    \beamer@xpos=0\relax%
+    \beamer@ypos=1\relax%
+    \hbox to #1{\hskip.3cm\setbox\beamer@sectionbox=\hbox{\kern1sp}%
+      \ht\beamer@sectionbox=1.875ex%
+      \dp\beamer@sectionbox=0.75ex%
+        \hskip-\sectionsep% original -1.875ex plus 1fill
+        \global\beamer@section@min@dim\z@
+        \dohead%\hskip\sectionsep%
+        \beamer@section@set@min@width
+      \box\beamer@sectionbox\hfill\hfill%
+      \raisebox{-2pt}{\insertframenumber}\hspace*{4pt}%
+      %\hfill%\hskip.3cm
+      }%
+  }}}
+\makeatother
+
+% https://tex.stackexchange.com/questions/228256/control-colors-and-shading-of-navigation-circles-in-beamer-top-line
+% \patchcmd{\sectionentry}{\usebeamercolor[fg]{section in head/foot}}{\usebeamercolor[fg]{mini frame}}{}{}
+
+
+\colorlet{darkercsugreen}{black!15!fixedbgcolor}
+
+\definecolor{whitedarker}{HTML}{CCCCCC}
+
+\setbeamercolor{mycolor1}{fg=whitedarker,bg=}
+
+\setbeamercolor{mycolor2}{fg=csugold,bg=darkercsugreen}
+
+\setbeamercolor{mycolor3}{fg=fixedtextcolor,bg=}
+
+\newcommand{\xyoutubepage}[3]{
+\miniframesoff
+\bgroup
+\setbeamercolor{background canvas}{bg=fixedbgcolor}
+\begin{frame}[noframenumbering,plain]
+
+\begin{beamercolorbox}[wd=\paperwidth,sep=0.1in,center]{mycolor1}
+\scalebox{4}{#2}
+\end{beamercolorbox}%
+
+\vspace*{1\baselineskip}%
+
+\begin{beamercolorbox}[wd=\paperwidth,sep=0.2in,center]{mycolor2}
+\scalebox{6}{#3}
+\end{beamercolorbox}%
+
+\vspace*{1\baselineskip}%
+
+\begin{beamercolorbox}[wd=\paperwidth,sep=0.1in,center]{mycolor3}
+\begin{minipage}{0.9\paperwidth}\centering
+\fontsize{36}{42}\selectfont#1
+\end{minipage}
+\end{beamercolorbox}%
+
+\end{frame}
+\egroup
+\miniframeson
+}
+
+\newcommand{\xyoutubepagenew}[4]{%
+\miniframesoff
+\bgroup
+\setbeamercolor{background canvas}{bg=fixedbgcolor}
+\begin{frame}[noframenumbering,plain]
+\begin{textblock*}{\paperwidth}(0pt,0.075\paperheight)\centering
+\makebox[\paperwidth]{\textcolor{whitedarker}{\fontsize{36}{0}\selectfont#1}}
+\end{textblock*}
+
+\begin{textblock*}{\paperwidth}(0pt,0.25\paperheight)
+\colorbox{darkercsugreen}{%
+\begin{minipage}[c][0.25\paperheight][c]{\paperwidth}\centering%
+\textcolor{csugold}{\fontsize{56}{0}\selectfont#2}%
+\end{minipage}}%
+\end{textblock*}
+
+% \begin{textblock*}{\paperwidth}(0pt,0.55\paperheight)\centering
+% \setstretch{1.5}
+% \begin{minipage}[c]{0.95\paperwidth}\centering%
+% % \parbox{0.95\paperwidth}{\centering\textcolor{fixedtextcolor}{\fontsize{32}{32}\selectfont#1}}
+% \parbox{0.95\paperwidth}{\centering\textcolor{fixedtextcolor}{\Huge#3}}
+% \end{minipage}%
+% \end{textblock*}
+
+\begin{textblock*}{\paperwidth}(0pt,0.60\paperheight)\centering
+\begin{minipage}[c]{0.95\paperwidth}\centering%
+\textcolor{fixedtextcolor}{\fontsize{40}{40}\selectfont#3}
+\end{minipage}%
+\end{textblock*}
+
+\begin{textblock*}{\paperwidth}(0pt,0.77\paperheight)\centering
+\begin{minipage}[c]{0.95\paperwidth}\centering%
+\textcolor{fixedtextcolor}{\fontsize{40}{40}\selectfont#4}
+\end{minipage}%
+\end{textblock*}
+
+\end{frame}
+\egroup
+\miniframeson
+}
